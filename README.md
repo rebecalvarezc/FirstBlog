@@ -12,7 +12,7 @@ It was also meant to familiarize the creator with the use of streamlit as a back
 - The 'Manage Blog' section is still under construction at the moment (Oct. 2021)
 
 ## Links
-The app have been deployed and can be visited in: [here](https://share.streamlit.io/rebecalvarezc/firstblog/main/blog_project/app.py).
+The app have been deployed and can be visited in: [here](https://share.streamlit.io/rebecalvarezc/firstblog/main/blog_project/app.py){:taget="_blank"}.
 
 ## Authors
-[@rebecalvarezc](https://www.linkedin.com/in/rebeca-alvarez-cepeda/)
+[@rebecalvarezc](https://www.linkedin.com/in/rebeca-alvarez-cepeda/){:taget="_blank"}
