@@ -1,4 +1,4 @@
-from datetime import datetime
+from typing import List
 import streamlit as st
 import sqlite3
 
@@ -62,7 +62,7 @@ HOME_POST = "SELECT post_title, post_author, post_content FROM posts ORDER BY po
 connection = sqlite3.connect('rebeca_blog_database.db')
 
 
-def create_database():
+def create_database() -> None:
     """
     This function creates the database if it does not exists.
     """
@@ -70,14 +70,14 @@ def create_database():
         connection.execute(CREATE_TABLE)
 
 
-def add_post(author: str, title: str, post_len: str, date: str):
+def add_post(author: str, title: str, post_len: str, date: str) -> None:
     char_len = len(post_len)
     print(char_len)
     with connection:
         connection.execute(INSERT_POST_INFO, (author, title, char_len, post_len, date))
 
 
-def select_recent_posts() -> list[tuple]:
+def select_recent_posts() -> List[tuple]:
     """
     This function returns a list of tuples with the date of the last added posts.
     """
@@ -85,19 +85,19 @@ def select_recent_posts() -> list[tuple]:
         return connection.execute(SELECT_RECENT_POSTS).fetchall()
 
 
-def search(condition: bool, search_entry: str) -> list[tuple]:
+def search(condition: bool, search_entry: str) -> List[tuple]:
     with connection:
         if condition:
             return connection.execute(SEARCH_POSTS_BY_TITLE, (search_entry,)).fetchall()
         return connection.execute(SEARCH_POSTS_BY_AUTHOR, (search_entry,)).fetchall()
 
 
-def search_by_date(date: str):
+def search_by_date(date: str) -> List[tuple]:
     with connection:
         return connection.execute(SEARCH_BY_DATE, (date,)).fetchall()
 
 
-def home_post():
+def home_post() -> List[tuple]:
     with connection:
         return connection.execute(HOME_POST).fetchall()
 
@@ -114,7 +114,7 @@ def main():
     if choice == 'Home':
         st.subheader('Home')
         last_post = home_post()
-        for title, author,content in last_post:
+        for title, author, content in last_post:
             st.markdown(html_articles.format('lavenderblush', 'black', title, 'black', author, content),
                         unsafe_allow_html=True)
     elif choice == 'View Posts':
