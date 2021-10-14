@@ -7,22 +7,21 @@ import sqlite3
 html_template = """
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-    <div style = "background-color: {}; padding: 10px; border-radius: 10px">
-    <h1 style = "color: {}; text-align:center;font-family:'Playfair Display', serif;">Rebeca\'s Blog </h1>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <div style = "border: 5px {} solid; padding: 10px; border-radius: 10px">
+    <h1 style = "color: {}; text-align:center;font-family:'Concert One', serif;">REBECA'S BLOG </h1>
     </div>"""
 
 html_articles = """
-     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
-    <div style = "background-color: {}; padding: 5px; border-radius: 10px">
-    <img src="https://www.pikpng.com/pngl/b/306-3065627_instagram-heart-png-clipart-background-discord-heart-emoji.png" 
-    width= "70px" height= "50px"/>
-    <h2 style = "color: {}; text-align:center; font-size: 32px; font-family:'Playfair Display', serif;"> {} </h2>
+    <div style = "border: 5px {} solid; padding: 5px; border-radius: 10px">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu_L_827-vyYdKc-Mn0SLgO0ClGOTlyNhW1Q&usqp=CAU" 
+    width= "60px" height= "60px"/>
+    <h2 style = "color: {}; text-align:center; font-size: 32px; font-family:'Concert One', serif;"> {} </h2>
     <h4 style = "color: {}; text-align:center; font-size: 16px; font-family:'Roboto', sans serif;"> {} </h4>
     <br>
     <p style = "font-family:'Roboto', serif; padding: 8px"> {} </p>
@@ -106,7 +105,7 @@ def home_post() -> List[tuple]:
 
 
 def main():
-    st.markdown(html_template.format('#ee4466', 'black'), unsafe_allow_html=True)
+    st.markdown(html_template.format('Black', 'black'), unsafe_allow_html=True)
     menu = ['Home', 'View Posts', 'Add Posts', 'Search', 'Manage Blog']
     choice = st.sidebar.selectbox('Menu', menu)
     create_database()
@@ -115,7 +114,7 @@ def main():
         st.subheader('Home')
         last_post = home_post()
         for title, author, content in last_post:
-            st.markdown(html_articles.format('lavenderblush', 'black', title, 'black', author, content),
+            st.markdown(html_articles.format('black', 'black', title, 'black', author, content),
                         unsafe_allow_html=True)
     elif choice == 'View Posts':
         st.subheader('View Articles')
@@ -127,7 +126,7 @@ def main():
         posts = search_by_date(date)
         if posts:
             for author, title, content in posts:
-                st.markdown(html_articles.format('lavenderblush', 'black', title, 'black', author, content),
+                st.markdown(html_articles.format('black', 'black', title, 'black', author, content),
                             unsafe_allow_html=True)
         else:
             st.write('No posts found.')
@@ -154,7 +153,7 @@ def main():
             show_titles = search(True, post_title)
             if show_titles:
                 for title, author, content in show_titles:
-                    st.markdown(html_articles.format('lavenderblush', 'black', title, 'black', author, content),
+                    st.markdown(html_articles.format('black', 'black', title, 'black', author, content),
                                 unsafe_allow_html=True)
             else:
                 st.error('No posts found.')
@@ -163,7 +162,7 @@ def main():
             show_authors = search(False, post_author)
             if show_authors:
                 for title, author, content in show_authors:
-                    st.markdown(html_articles.format('lavenderblush', 'black', title, 'black', author, content),
+                    st.markdown(html_articles.format('black', 'black', title, 'black', author, content),
                                 unsafe_allow_html=True)
             else:
                 st.error('No posts found.')
