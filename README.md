@@ -14,5 +14,8 @@ It was also meant to familiarize the creator with the use of streamlit as a back
 ## Links
 The app have been deployed and can be visited in: [here](https://share.streamlit.io/rebecalvarezc/firstblog/main/blog_project/app.py).
 
+## Screenshots
+![BlogScreenshot](blog_project/screenshot.png)
+
 ## Authors
 [@rebecalvarezc](https://www.linkedin.com/in/rebeca-alvarez-cepeda/).
